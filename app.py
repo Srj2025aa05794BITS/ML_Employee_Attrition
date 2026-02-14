@@ -52,4 +52,22 @@ if uploaded_file is not None:
     st.subheader("Evaluation Metrics")
 
     st.write(f"Accuracy: {acc:.3f}")
-    st.write(f"Precision: {pre
+    st.write(f"Precision: {prec:.3f}")
+    st.write(f"Recall: {rec:.3f}")
+    st.write(f"F1 Score: {f1:.3f}")
+    st.write(f"AUC Score: {auc:.3f}")
+
+    # ---------------- CONFUSION MATRIX ----------------
+    st.subheader("Confusion Matrix")
+
+    cm = confusion_matrix(y, y_pred)
+    fig, ax = plt.subplots()
+    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', ax=ax)
+    ax.set_xlabel("Predicted")
+    ax.set_ylabel("Actual")
+    st.pyplot(fig)
+
+    # ---------------- CLASSIFICATION REPORT ----------------
+    st.subheader("Classification Report")
+    report = classification_report(y, y_pred)
+    st.text(report)
