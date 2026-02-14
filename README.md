@@ -27,11 +27,11 @@ Models Implemented
 Observations:
 
 <br>ML Model Name	--------------------------Observation about model performance
-<br>Logistic Regression	-----------------Logistic Regression achieved the highest accuracy but very low recall, indicating the model predicts the majority class more often  &ensp and fails to detect many employees who leave. Hence it is biased toward non-attrition cases.	|
+<br>Logistic Regression	-----------------Logistic Regression achieved the highest accuracy but very low recall, indicating the model predicts the majority class more often  and fails to detect many employees who leave. Hence it is biased toward non-attrition cases.	|
 <br>Decision Tree	----------------------Decision Tree showed unstable performance with low MCC and F1 score, suggesting overfitting and poor 
- &ensp generalization on unseen data.	|
-<br>kNN	--------------------------------KNN produced high accuracy but extremely low recall, meaning it struggles to identify minority attrition cases and is sensitive to  &ensp class                                       imbalance.	|
-<br>Naive Bayes----------------------	Naive Bayes achieved the highest recall and F1 score, effectively detecting employees likely to leave. It performed best for the  &ensp imbalanced                                   dataset and provided the most balanced classification.	|
-<br>Random Forest (Ensemble)	-------------Random Forest improved stability over Decision Tree but still had low recall, indicating it predicts majority class more  &ensp frequently                                           despite ensemble learning.	|
-<br>XGBoost (Ensemble)------------------	XGBoost showed strong accuracy and good overall performance but lower recall than Naive Bayes, meaning it is more conservative in                                              &ensp predicting attrition cases.	|
+ generalization on unseen data.	|
+<br>kNN	--------------------------------KNN produced high accuracy but extremely low recall, meaning it struggles to identify minority attrition cases and is sensitive to  class                                       imbalance.	|
+<br>Naive Bayes----------------------	Naive Bayes achieved the highest recall and F1 score, effectively detecting employees likely to leave. It performed best for the  imbalanced                                   dataset and provided the most balanced classification.	|
+<br>Random Forest (Ensemble)	-------------Random Forest improved stability over Decision Tree but still had low recall, indicating it predicts majority class more  frequently                                           despite ensemble learning.	|
+<br>XGBoost (Ensemble)------------------	XGBoost showed strong accuracy and good overall performance but lower recall than Naive Bayes, meaning it is more conservative in                                              predicting attrition cases.	|
 
