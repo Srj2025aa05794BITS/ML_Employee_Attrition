@@ -17,7 +17,6 @@ model_name = st.selectbox(
 
 model_file = model_name.lower().replace(" ", "_") + "_model.pkl"
 model = pickle.load(open(f"models/{model_file}", "rb"))
-scaler = pickle.load(open("scaler.pkl", "rb"))
 
 # ---------------- DATA UPLOAD ----------------
 uploaded_file = st.file_uploader("Upload Test Dataset (CSV)", type=["csv"])
@@ -29,17 +28,11 @@ if uploaded_file is not None:
     st.subheader("Uploaded Dataset")
     st.write(df.head())
 
-    # target column must be Attrition
-    df['Attrition'] = df['Attrition'].map({'Yes':1,'No':0})
-
+    # dataset already preprocessed in notebook
     X = df.drop("Attrition", axis=1)
     y = df["Attrition"]
 
-    # encode categorical columns
-    for col in X.select_dtypes(include='object').columns:
-        X[col] = X[col].astype('category').cat.codes
-
-    X_scaled = scaler.transform(X)
+    X_scaled = X.values
 
     # ---------------- PREDICTION ----------------
     y_pred = model.predict(X_scaled)
@@ -59,22 +52,4 @@ if uploaded_file is not None:
     st.subheader("Evaluation Metrics")
 
     st.write(f"Accuracy: {acc:.3f}")
-    st.write(f"Precision: {prec:.3f}")
-    st.write(f"Recall: {rec:.3f}")
-    st.write(f"F1 Score: {f1:.3f}")
-    st.write(f"AUC Score: {auc:.3f}")
-
-    # ---------------- CONFUSION MATRIX ----------------
-    st.subheader("Confusion Matrix")
-
-    cm = confusion_matrix(y, y_pred)
-    fig, ax = plt.subplots()
-    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', ax=ax)
-    ax.set_xlabel("Predicted")
-    ax.set_ylabel("Actual")
-    st.pyplot(fig)
-
-    # ---------------- CLASSIFICATION REPORT ----------------
-    st.subheader("Classification Report")
-    report = classification_report(y, y_pred)
-    st.text(report)
+    st.write(f"Precision: {pre
